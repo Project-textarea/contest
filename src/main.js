@@ -9,6 +9,8 @@ const vue = createApp(App)
 // vue.use(hideAddress)
 import mitt from "mitt"
 vue.config.globalProperties.$eventBus = new mitt()
+import axios from "./assets/js/axios";
+vue.config.globalProperties.$h = axios;
 vue.use(router)
 vue.use(store)
 vue.mount('#app')

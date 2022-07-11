@@ -35,7 +35,10 @@ const store = createStore({
                     reject(reason)
                 })
             })
-        }
+        },
+        disconnect(context){
+            context.commit("setUser",null)
+        },
     }
 })
 export default store
