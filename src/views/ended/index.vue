@@ -259,7 +259,6 @@ export default ({
         },
       ],
       count: 0,
-      address:null,
     }
   },
   mounted() {

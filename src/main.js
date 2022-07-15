@@ -11,6 +11,10 @@ import mitt from "mitt"
 vue.config.globalProperties.$eventBus = new mitt()
 import axios from "./assets/js/axios";
 vue.config.globalProperties.$h = axios;
+import $ from 'jquery'
+import '@/assets/js/jquery.datetimepicker.js'
+import Notifications from '@kyvg/vue3-notification'
+vue.use(Notifications)
 vue.use(router)
 vue.use(store)
 vue.mount('#app')

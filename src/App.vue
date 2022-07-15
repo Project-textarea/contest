@@ -4,9 +4,19 @@
 </script>
 
 <template>
+  <notifications  position="center center" class="notifications" width="500" />
   <router-view />
 </template>
 
 <style  lang="less">
 @import "styles/common.less";
+
+</style>
+<style>
+.notification-content{
+  font-size: 20px;
+}
+.vue-notification-group{
+  top: 5vh;
+}
 </style>

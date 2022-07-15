@@ -1,0 +1,202 @@
+
+.bg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: #000;
+  opacity: 0;
+}
+.create1-container {
+  margin: auto;
+  max-width: 880px;
+  padding-bottom: 50px;
+  .create1-title {
+    text-align: center;
+    font-size: @font26;
+    color: #ffffff;
+    padding: 100px 0 75px;
+  }
+  .show-line{
+    border-bottom: 1px solid #162e31;
+    //position: relative;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    &:after{
+      content: '';
+      width: 1px;
+      height: 7px;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #162e31;
+    }
+    &:before{
+      content: '';
+      width: 1px;
+      height: 7px;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: #162e31;
+    }
+    &.active{
+      border-color:#fff;
+
+    }
+    &.active:before,
+    &.active:after{
+      background:#fff;
+    }
+    &.doing{
+      a.icon{
+        background: #ffffff;
+      }
+    }
+    &.ended{
+      a.icon{
+        background: #ffffff;
+        span:nth-child(1){
+          display: none;
+        }
+      }
+    }
+    &.green-input{
+      .text{
+        color: @ButtonActiveBg;
+      }
+    }
+  }
+  dl{
+    .span{
+      width: 30px;
+      display: inline;
+      background: transparent;
+      border: 0;
+      font-size:22px;
+      color: #ffffff;
+      text-align: center;
+    }
+    .data-sum{
+      font-size:22px;
+      color: #ffffff;
+      .data{
+        position: relative;
+        z-index: 0;
+        &.active{
+          z-index: 10;
+        }
+        .wrapper-flex-row{
+          width: 100%;
+        }
+        .data-model{
+          position: absolute;
+          //top: 100%;
+          bottom: 100%;
+          right: 15px;
+        }
+        .text{
+          width: 300px;
+          font-size: 20px;
+        }
+      }
+    }
+    dd{
+      position: relative;
+      margin-bottom: 50px;
+      .dd-tit{
+        font-size:22px;
+        color: #ffffff;
+        line-height: 38px;
+      }
+      .re{
+        position: relative;
+        z-index: 10;
+      }
+      .text{
+        width: 100%;
+        line-height: 38px;
+        border: 0;
+        background: transparent;
+        font-size:22px;
+        color: #ffffff;
+        &.text1{
+          max-width: 480px;
+          margin-right: 80px;
+          box-sizing: border-box;
+        }
+        &.text2{
+          max-width: 680px;
+        }
+      }
+      .data{
+        width: 400px;
+        .text{
+          cursor: pointer;
+        }
+        .text2{
+          max-width: 200px;
+        }
+        .text3{
+          max-width: 220px;
+        }
+      }
+    }
+    a.icon{
+      position: absolute;
+      bottom: 10px;
+      background: #162e31;
+      right: 10px;
+      div{
+        width: 16px;
+        height: 16px;
+        position: relative;
+      }
+      span:nth-child(1){
+        width: 2px;
+        height: 8px;
+        display: block;
+        position: absolute;
+        bottom: 4px;
+        right: 7px;
+        background: #000000;
+      }
+      span:nth-child(2){
+        height: 2px;
+        width: 8px;
+        display: block;
+        position: absolute;
+        bottom: 7px;
+        left:  4px;
+        background: #000000;
+      }
+    }
+  }
+  .len{
+    font-size: 22px;
+    color: #0a5354;
+    position: absolute;
+    right: 0;
+    line-height: 40px;
+    bottom: 0;
+    background: #000000;
+    padding: 0 10px;
+  }
+  .button-game{
+    width: 100%;
+    border-radius: 5px;
+    background: #008085;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 80px;
+  }
+  .button-game.addTop{
+    //margin-top: 300px;
+  }
+}

@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="user-nav-list">
-      <a :class="[navIndex===index?'active':'']" v-for="(item,index) in navList" :key="index" @click="linkTo(item)">{{
+      <a :class="[$route.path==item.router?'active':'']" v-for="(item,index) in navList" :key="index" @click="linkTo(item)">{{
           item.name
         }}</a>
     </div>
@@ -23,31 +23,47 @@ import $store from '@/store/index.js'
 import {hideAddressEvent} from '@/assets/js/filters.js'
 
 export default {
+  props:{
+    user: {
+      type: String,
+      request: false,
+      default: null,
+    },
+    // text2:{
+    //   type:String,
+    //   request:false,
+    //   default:'',
+    // }
+  },
   name: "user-navigation",
   data() {
     return {
-      user:null,
       navIndex: 0, //navbar index
       navList: [
         {
           name: 'Ongoing contest',
           id: 0,
+          router:'/home',
         },
         {
           name: 'Ended contest',
           id: 1,
+          router:'/ended',
         },
         {
           name: 'Create a contest',
           id: 3,
+          router:'/create1',
         },
         {
           name: 'Profile',
           id: 4,
+          router:'/',
         },
         {
           name: 'Make a sentence',
           id: 5,
+          router:'https://test.textarea.xyz/sentence',
         },
       ], //navbar List
     }
@@ -62,21 +78,28 @@ export default {
   computed:{
   },
   methods:{
+    linkTo(item){
+      if(item.id==5){
+        window.open(item.router)
+      }else{
+        this.$router.push(item.router)
+      }
+    },
     /**
      * @desc: Call metamask through store internal method
      * */
     async  getUserInfo()  {
       await $store.dispatch('getUserInfo');
-      this.user=$store.state.user;
-      this.$emit('getAccounts',this.user);
+      // this.user=$store.state.user;
+      this.$emit('getAccounts',$store.state.user);
     },
     /**
      * @desc: Call metamask through store internal method
      * */
     async  disconnect()  {
       await $store.dispatch('disconnect');
-      this.user=$store.state.user;
-      this.$emit('getAccounts',this.user);
+      // this.user=$store.state.user;
+      this.$emit('getAccounts',$store.state.user);
     }
   },
   setup() {
