@@ -42,15 +42,21 @@
             <dl>
               <dd class="wrapper-flex-row show-line" :class="input1Active==true?'active':''">
                 <div class="dd-tit">Competition introduction:</div>
-                <input spellcheck='false' type="text" placeholder="NFT Contract address" v-model="input1" class="text text1"
-                       maxlength="200"
-                       @blur="blurEvent(this.input1,1)" @focus="focusEvent(this.input1,1)">
+                <div :class="[input1.length>0?'animation':'','text-container text text1']">
+                  <input spellcheck='false' type="text" placeholder="" v-model="input1" class="text "
+                         maxlength="200"
+                         @blur="blurEvent(this.input1,1)" @focus="focusEvent(this.input1,1)">
+                  <h6 class="placeholder">NFT Contract address</h6>
+                </div>
                 <div class="len">{{ input1.length }}/200</div>
               </dd>
               <dd class="wrapper-flex-row show-line" :class="[input2Active?'active':'',doing1?'doing':'',ended1?'doing active':'green-input']">
                 <div class="dd-tit">Add 1st Prize:</div>
-                <input spellcheck='false' type="text" placeholder="NFT Contract address" v-model="input2" class="text text2"
-                       @blur="blurEvent(this.input2,2)" @focus="focusEvent(this.input2,2)">
+                <div :class="[input2.length>0?'animation':'','text-container text text2']">
+                  <input spellcheck='false' type="text" placeholder="" v-model="input2" class="text text2"
+                         @blur="blurEvent(this.input2,2)" @focus="focusEvent(this.input2,2)">
+                  <h6 class="placeholder">NFT Contract address</h6>
+                </div>
                 <a class="icon">
                   <div>
                     <span></span>
@@ -60,8 +66,11 @@
               </dd>
               <dd class="wrapper-flex-row show-line" :class="[input3Active?'active':'',doing2?'doing':'',ended2?'doing active':'green-input']">
                 <div class="dd-tit">Add 2st Prize:</div>
-                <input spellcheck='false' type="text" placeholder="NFT Contract address" v-model="input3" class="text text2"
-                       @blur="blurEvent(this.input3,3)" @focus="focusEvent(this.input3,3)">
+                <div :class="[input3.length>0?'animation':'','text-container text text2']">
+                  <input spellcheck='false' type="text" placeholder="" v-model="input3" class="text text2"
+                         @blur="blurEvent(this.input3,3)" @focus="focusEvent(this.input3,3)">
+                  <h6 class="placeholder">NFT Contract address</h6>
+                </div>
                 <a class="icon">
                   <div>
                     <span></span>
@@ -71,8 +80,12 @@
               </dd>
               <dd class="wrapper-flex-row show-line" :class="[input4Active?'active':'',doing3?'doing':'',ended3?'doing active':'green-input']">
                 <div class="dd-tit">Add 3st Prize:</div>
-                <input spellcheck='false' type="text" placeholder="NFT Contract address" v-model="input4" class="text text2"
-                       @blur="blurEvent(this.input4,4)" @focus="focusEvent(this.input4,4)">
+
+                <div :class="[input4.length>0?'animation':'','text-container text text2']">
+                  <input spellcheck='false' type="text" placeholder="" v-model="input4" class="text text2"
+                         @blur="blurEvent(this.input4,4)" @focus="focusEvent(this.input4,4)">
+                  <h6 class="placeholder">NFT Contract address</h6>
+                </div>
                 <a class="icon">
                   <div>
                     <span></span>
@@ -85,8 +98,11 @@
                   <div class="wrapper-flex-row">
                     <div class="dd-tit" @click="this.data1Show?this.data1Show=false:''">Starting time:</div>
                     <div class="re">
-                      <input spellcheck='false' type="text" placeholder="Select a start time" v-model="input5" class="text text2" readonly
-                             @click="focusEvent(this.input5,5)" id="date-text1-2">
+                      <div :class="[input5.length>0?'animation':'','text-container text text2']">
+                        <input spellcheck='false' type="text" placeholder="" v-model="input5" class="text text2" readonly
+                               @click="focusEvent(this.input5,5)" id="date-text1-2">
+                        <h6 class="placeholder">Select a start time</h6>
+                      </div>
                       <div id="demo1-2" class="data-model" v-show="data1Show"></div>
                     </div>
                   </div>
@@ -96,8 +112,11 @@
                   <div class="wrapper-flex-row">
                     <div class="dd-tit" @click="this.data2Show?this.data2Show=false:''">Ending time:</div>
                     <div class="re">
-                      <input spellcheck='false' type="text" placeholder="Select an end time" v-model="input6" class="text text3" readonly
-                             @click="focusEvent(this.input6,6)">
+                      <div :class="[input6.length>0?'animation':'','text-container text text2']">
+                        <input spellcheck='false' type="text" placeholder="" v-model="input6" class="text text3" readonly
+                               @click="focusEvent(this.input6,6)">
+                        <h6 class="placeholder">Select an end time</h6>
+                      </div>
                       <div id="demo1-3" class="data-model" v-show="data2Show"></div>
                     </div>
                   </div>
@@ -276,9 +295,9 @@ export default ({
     },
   },
   methods: {
-    getAccounts(accout) {
-      // console.log(accout)
-      this.address = accout;
+    getAccounts(accounts) {
+      console.log(accounts)
+      this.address = accounts;
     },
     blurEvent(input, clas) {
       console.log(input)

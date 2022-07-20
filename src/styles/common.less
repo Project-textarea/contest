@@ -1,10 +1,9 @@
-
 @userPadding: 32px 30px;
 @navPadding: 27px 30px;
 @buttonPadding: 25px 30px;
 @contentPadding: 20px 23px;
 @primaryBg: #041c1d;
-@primaryButtonBg: #56b985;
+@primaryButtonBg: #a0e5e6;
 @ButtonHoverBg: #022223;
 @ButtonActiveBg: #2d8081;
 @primaryFontColor: #ffffff;
@@ -32,6 +31,10 @@ html, body, dl, dd, img, form, div, ul, ol, li, h1, h2, h3, h4, h5, h6, p, butto
   font-family: 'iconfont';
   src: url('../styles/iconfont.ttf');
 }
+@font-face {
+  font-family: 'iconfont-nav';
+  src: url('../styles/iconfont-nav.ttf');
+}
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -40,7 +43,13 @@ html, body, dl, dd, img, form, div, ul, ol, li, h1, h2, h3, h4, h5, h6, p, butto
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.iconfont-nav{
+  font-family: "iconfont-nav" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body {
   font-family: 'unifont';
   -webkit-tap-highlight-color: transparent;
@@ -52,7 +61,7 @@ body {
   overflow-y: hidden;
 }
 
-input, button, textarea, *,dd,span {
+input, button, textarea, *, dd, span {
   font-family: 'unifont';
 }
 
@@ -445,7 +454,7 @@ input::placeholder {
 }
 
 input::-webkit-input-placeholder {
-  color:@ButtonActiveBg;
+  color: @ButtonActiveBg;
 }
 
 .box {
@@ -517,34 +526,103 @@ input::-webkit-input-placeholder {
   background: @primaryBg;
   border-right: 1px solid @lineColor;
   box-sizing: border-box;
+  position: relative;
 
-  .user-wallet, .section-title {
+  .user-wallet, .user-wallet1, .section-title {
     padding: @navPadding;
     border-bottom: 1px solid @lineColor;
 
+    &.user-wallet {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
+      left: 0;
+    }
+
+    &.user-wallet1 {
+      padding: 17px 27px;
+      position: relative;
+      display: block;
+
+      .logo1 {
+        position: absolute;
+        top: 11px;
+        right: 77px;
+        width: 75px;
+        //transform: skew(-15deg);
+        clip-path: inset(0px 75px 0px 0px);
+        -webkit-clip-path: inset(0px 75px 0px 0px);
+        animation: myfirst 1.3s infinite cubic-bezier(.85, 0, .83, .67);
+      }
+
+      .logo2 {
+        width: 75px;
+        position: absolute;
+        top: 11px;
+        right: 77px;
+      }
+
+      &:hover {
+        .logo1 {
+
+          //-webkit-animation: myfirst .65s linear alternate;
+          //clip-path: inset(0px 0px 0px 75px);
+          //-webkit-clip-path: inset(0px 0px 0px 75px);
+          //transform: skew(0deg);
+          //clip-path: inset(0px 0px 0px 75px);
+          //-webkit-clip-path: inset(0px 0px 0px 75px);
+        }
+      }
+    }
+
+
+    @-webkit-keyframes myfirst {
+      from {
+        clip-path: inset(0px 73px 0px 0px);
+        -webkit-clip-path: inset(0px 73px 0px 0px);
+        opacity: 0.55;
+      }
+      to {
+        clip-path: inset(0px 0px 0px 65px);
+        -webkit-clip-path: inset(0px 0px 0px 65px);
+        opacity: 1;
+      }
+    }
+
     a.connect-wallet {
-      width: 195px;
-      height: 45px;
-      line-height: 45px;
+      width: 100%;
+      height: 65px;
+      line-height: 64px;
       background: @primaryButtonBg;
-      font-size: 20px;
-      color: @primaryFontColor;
+      font-size: 22px;
+      color: @blackBg;
       text-align: center;
       border-radius: 5px;
+
+      span {
+        margin-left: -27px;
+      }
+
+      .icon {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 11px;
+      }
     }
 
     .address {
       padding: 14px 0 13px;
-      font-size: @font18;
-      color: @primaryFontColor;
+      font-size: @font20;
+      color: #2d8081;
     }
 
     .logout {
-      font-size: @font18;
+      font-size: 22px;
       color: @primaryFontColor;
-      background: #720303;
-      padding: 7px 15px 10px;
-      line-height: 1;
+      background: @ButtonActiveBg;
+      padding: 0 25px;
+      line-height: 65px;
       border-radius: 5px;
       display: block;
     }
@@ -559,6 +637,9 @@ input::-webkit-input-placeholder {
   }
 
   .user-nav-list {
+    span{
+      font-size: @font24;
+    }
     a {
       border-bottom: 1px solid @lineColor;
       background: @primaryBg;
@@ -569,7 +650,7 @@ input::-webkit-input-placeholder {
       color: @ButtonActiveBg;
       box-sizing: border-box;
       line-height: 1;
-      cursor: pointer!important;
+      cursor: pointer !important;
 
       &:hover {
         color: #ffffff;
@@ -627,7 +708,7 @@ input::-webkit-input-placeholder {
     li {
       padding: @buttonPadding;
       box-sizing: border-box;
-      border-bottom: 1px solid @lineColor;
+      border-bottom: 1px solid @lineColor1;
       position: relative;
       cursor: pointer;
       text-transform: capitalize;
@@ -636,6 +717,12 @@ input::-webkit-input-placeholder {
         font-size: @font24;
         color: @ButtonActiveBg;
         width: 100%;
+      }
+
+      .number {
+        display: inline-block;
+        font-size: 16px;
+        margin-left: 2px;
       }
 
       .share {
@@ -714,6 +801,10 @@ input::-webkit-input-placeholder {
 
       &.active {
         background: @ButtonActiveBg;
+
+        .number {
+          color: #ffffff;
+        }
 
         text {
           color: #ffffff;
@@ -943,7 +1034,7 @@ input::-webkit-input-placeholder {
 
 .no-wallet {
   //text-align: center;
-  padding-top:32px;
+  padding-top: 32px;
   padding-left: 30px;
 
   .no-wallet-icon {
@@ -958,9 +1049,9 @@ input::-webkit-input-placeholder {
 
   .no-wallet-text {
     font-size: 22px;
-    color: @ButtonActiveBg;
+    color: #2d8081;
     //opacity: .5;
-    text-decoration: underline;
+    //text-decoration: underline;
   }
 }
 
@@ -982,6 +1073,7 @@ input::-webkit-input-placeholder {
     dd {
       .desc {
         padding: 45px 0 20px;
+
         .add {
           position: relative;
           width: 12px;
@@ -1010,7 +1102,8 @@ input::-webkit-input-placeholder {
         font-size: @font24;
         color: #ffffff;
         display: block;
-        i{
+
+        i {
           width: 15px;
           height: 15px;
           display: inline-block;
@@ -1018,7 +1111,7 @@ input::-webkit-input-placeholder {
           line-height: 13px;
           text-align: left;
           font-size: @font20;
-          margin-left:8px;
+          margin-left: 8px;
           box-sizing: border-box;
         }
       }

@@ -2,7 +2,7 @@
   <div>
     <div class="container flex flex-center">
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts'></user-navigation>
+      <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section">
         <div class="section-title">Word in game</div>
@@ -259,6 +259,7 @@ export default ({
         },
       ],
       count: 0,
+      address:null,
     }
   },
   mounted() {
@@ -268,9 +269,9 @@ export default ({
     })
   },
   methods: {
-    getAccounts(accout) {
-      console.log(accout)
-      this.address=accout;
+    getAccounts(accounts) {
+      this.address=accounts;
+      // console.log(this.address)
     }
   },
   setup() {

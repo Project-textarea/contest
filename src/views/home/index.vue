@@ -2,7 +2,7 @@
   <div>
     <div class="container flex flex-center">
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts'></user-navigation>
+      <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section">
         <div class="section-title">Word in game</div>

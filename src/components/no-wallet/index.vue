@@ -8,8 +8,8 @@
             fill="#044243" p-id="4156"></path>
       </svg>
     </div>
-    <a class="no-wallet-text" v-if="link"  @click="getUserInfo()" >Please connect wallet</a>
-    <div class="no-wallet-text" v-else>Please connect wallet</div>
+    <a class="no-wallet-text" v-if="!link"  @click="getUserInfo()" >Please connect wallet</a>
+    <div class="no-wallet-text" v-else>No connect wallet...</div>
   </div>
 </template>
 
