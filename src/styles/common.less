@@ -531,7 +531,17 @@ input::-webkit-input-placeholder {
   .user-wallet, .user-wallet1, .section-title {
     padding: @navPadding;
     border-bottom: 1px solid @lineColor;
-
+    .icon{
+      font-size: 24px;
+      margin-right: 20px;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+      margin-top: 2px;
+      &:hover{
+        color: @primaryButtonBg;
+      }
+    }
     &.user-wallet {
       position: absolute;
       bottom: 0;
@@ -553,7 +563,7 @@ input::-webkit-input-placeholder {
         //transform: skew(-15deg);
         clip-path: inset(0px 75px 0px 0px);
         -webkit-clip-path: inset(0px 75px 0px 0px);
-        animation: myfirst 1.3s infinite cubic-bezier(.85, 0, .83, .67);
+        animation: myfirst 2.3s  infinite cubic-bezier(.85, 0, .83, .67);
       }
 
       .logo2 {
@@ -578,14 +588,24 @@ input::-webkit-input-placeholder {
 
 
     @-webkit-keyframes myfirst {
-      from {
+      0% {
         clip-path: inset(0px 73px 0px 0px);
         -webkit-clip-path: inset(0px 73px 0px 0px);
         opacity: 0.55;
       }
-      to {
+      50% {
         clip-path: inset(0px 0px 0px 65px);
         -webkit-clip-path: inset(0px 0px 0px 65px);
+        opacity: 1;
+      }
+      51% {
+        clip-path: inset(0px 0px 0px 99px);
+        -webkit-clip-path: inset(0px 0px 0px 99px);
+        opacity: 1;
+      }
+      100%{
+        clip-path: inset(0px 0px 0px 99px);
+        -webkit-clip-path: inset(0px 0px 0px 99px);
         opacity: 1;
       }
     }
@@ -874,7 +894,14 @@ input::-webkit-input-placeholder {
       &:nth-child(1) {
         padding-bottom: 80px;
       }
-
+      &.no-first{
+        padding: @navPadding;
+      }
+      .icon{
+        color: #669ea0;
+        font-size: 26px;
+        line-height: 30px;
+      }
       .reward {
         margin-bottom: 16px;
         //color: ##ffdbad;

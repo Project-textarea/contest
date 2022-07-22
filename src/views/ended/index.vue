@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading-bar :show="loading"></loading-bar>
     <div class="container flex flex-center">
       <!-- user-section-->
       <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
@@ -39,11 +40,14 @@
                   12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
                 </div>
                 <div class="reward wrapper-flex-row">
-                  <i class="icon">
-                    <img src="@/assets/images/icon-1.png" width="100%"/>
+<!--                  <i class="icon">-->
+<!--                    <img src="@/assets/images/icon-1.png" width="100%"/>-->
+<!--                  </i>-->
+
+                  <i class="iconfont-nav icon">
+                    &#xe605;
                   </i>
-                  <div class="name">1st: <a href="#" target="_blank">Opensea</a>; <a href="#"
-                                                                                     target="_blank">Etherscan</a><br/>
+                  <div class="name">1st: <a href="#" target="_blank">0x466C...13Ac</a><br/>
                     2st: <a href="#" target="_blank">0x466C...13Ac</a><br/>
                     3st: <a href="#" target="_blank">0x466C...13Ac</a>
                   </div>
@@ -60,7 +64,6 @@
                   </i>
                   <div class="name">TEXT; BAYC</div>
                 </div>
-                <a class="button">join the competition</a>
               </div>
             </li>
             <li v-for="(item,index) in sentenceList" :key="index">
@@ -79,10 +82,10 @@
                       <span class="iconfont">&#xe606;</span>
                     </a>
                   </div>
-                  <div class="vote">
-                    <span class="iconfont">&#xe602;</span>
-                    Vote
-                  </div>
+<!--                  <div class="vote">-->
+<!--                    <span class="iconfont">&#xe602;</span>-->
+<!--                    Vote-->
+<!--                  </div>-->
                 </div>
               </div>
             </li>
@@ -106,6 +109,7 @@ export default ({
   },
   data() {
     return {
+      loading:false,//loading Module
       search: '',
       focus: false,
       navIndex: 0,
@@ -259,7 +263,7 @@ export default ({
         },
       ],
       count: 0,
-      address:null,
+      address: null || sessionStorage.getItem('address'),
     }
   },
   mounted() {

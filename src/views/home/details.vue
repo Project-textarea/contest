@@ -32,10 +32,11 @@
         </ul>
       </section>
       <section class="user-section sentence-container">
-        <div class="section-title">Sentences for competition</div>
+        <div class="section-title"><span class="iconfont-nav icon" @click="returnPage">&#xe8a4;</span>Sentences for you
+        </div>
         <div class="list ">
           <ul class="wrapper-flex-wrap list-container">
-            <li>
+            <li class="no-first">
               <div class="desc">
                 <div class="info" style="word-break: break-all; ">
                   12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -65,7 +66,6 @@
                   </i>
                   <div class="name">TEXT; BAYC</div>
                 </div>
-                <router-link to="/select" class="button">Provide my sentence to contest</router-link>
               </div>
             </li>
             <li v-for="(item,index) in sentenceList" :key="index">
@@ -73,21 +73,7 @@
                 <div class="info">{{ item.text }}
                 </div>
                 <div class="doing wrapper-flex-row">
-                  <div class="share">
-                    <a href="#" target="_blank">
-                      <span class="iconfont">&#xf24d;</span>
-                    </a>
-                    <a href="#" target="_blank">
-                      <span class="iconfont">&#xe7d7;</span>
-                    </a>
-                    <a href="#" target="_blank">
-                      <span class="iconfont">&#xe606;</span>
-                    </a>
-                  </div>
-                  <div class="vote" @click="linkTo()">
-                    <span class="iconfont">&#xe602;</span>
-                    Vote
-                  </div>
+                  <a class="button">select sentence to contest</a>
                 </div>
               </div>
             </li>
@@ -302,18 +288,21 @@ export default ({
       console.log(accout)
       this.address = accout;
     },
+    returnPage() {
+      this.$router.go(-1);
+    },
     linkTo() {
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         this.loadingShow = true;
         // console.log('this.loadingShow',this.loadingShow);
       })
-      setTimeout(()=>{
+      setTimeout(() => {
         this.$notify({
           type: 'success',
           text: "successful vote!",
         });
         this.loadingShow = false;
-      },1000)
+      }, 1000)
     }
   },
   setup() {

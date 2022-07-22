@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading-bar :show="loading"></loading-bar>
     <div class="container flex flex-center">
       <div class="bg" v-show="data1Show"
            @click="this.data1Show=false;this.input5==''?this.input5Active=false:this.input5Active=true"></div>
@@ -13,17 +14,6 @@
         <ul class="list" v-if="address!=null">
           <li :class="index==0?'active':''" v-for="(item,index) in wordList" :key="index">
             <text>{{ item.text }}</text>
-            <div class="share">
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xf24d;</span>
-              </a>
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xe7d7;</span>
-              </a>
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xe606;</span>
-              </a>
-            </div>
           </li>
         </ul>
         <div v-else>
@@ -44,11 +34,11 @@
                 <div class="dd-tit">Competition introduction:</div>
                 <div :class="[input1.length>0?'animation':'','text-container text text1']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input1" class="text "
-                         maxlength="200"
+                         maxlength="100"
                          @blur="blurEvent(this.input1,1)" @focus="focusEvent(this.input1,1)">
                   <h6 class="placeholder">NFT Contract address</h6>
                 </div>
-                <div class="len">{{ input1.length }}/200</div>
+                <div class="len">{{ input1.length }}/100</div>
               </dd>
               <dd class="wrapper-flex-row show-line" :class="[input2Active?'active':'',doing1?'doing':'',ended1?'doing active':'green-input']">
                 <div class="dd-tit">Add 1st Prize:</div>
@@ -123,7 +113,7 @@
                 </div>
               </dd>
             </dl>
-            <a class="button-game" :class="[data1Show||data2Show?'addTop':'']">Start the game!</a>
+            <a class="button-game" :class="[data1Show||data2Show?'addTop':'']" @click="submit()">Start the game!</a>
           </div>
           <!--E create-container-->
         </div>
@@ -147,6 +137,7 @@ export default ({
   },
   data() {
     return {
+      loading:false,//loading Module
       startDate: null,
       input: '',
       search: '',
@@ -237,7 +228,7 @@ export default ({
         },
       ],
       count: 0,
-      address: null,
+      address: null || sessionStorage.getItem('address'),
       input1Active: false,
       input1: '',
       input2Active: false,
@@ -295,12 +286,56 @@ export default ({
     },
   },
   methods: {
+    submit(){
+      if(this.input1==''){
+        this.$notify({
+          type: 'warn',
+          text: "Competition introduction cannot be empty",
+        });
+        return
+      }
+      if(this.input2==''){
+        this.$notify({
+          type: 'warn',
+          text: "Please add the address of the 1st prize NFT",
+        });
+        return
+      }
+      if(this.input3==''){
+        this.$notify({
+          type: 'warn',
+          text: "Please add the address of the 2st prize NFT",
+        });
+        return
+      }
+      if(this.input4==''){
+        this.$notify({
+          type: 'warn',
+          text: "Please add the address of the 3st prize NFT",
+        });
+        return
+      }
+      if(this.input5==''){
+        this.$notify({
+          type: 'warn',
+          text: "Please select a start time",
+        });
+        return
+      }
+      if(this.input6==''){
+        this.$notify({
+          type: 'warn',
+          text: "Please select an end time",
+        });
+        return
+      }
+    },
     getAccounts(accounts) {
       console.log(accounts)
       this.address = accounts;
     },
     blurEvent(input, clas) {
-      console.log(input)
+      // console.log(input)
       if (input == '') {
         if (clas == 1) {
           this.input1Active = false

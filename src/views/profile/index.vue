@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading-bar :show="loading"></loading-bar>
     <div class="container flex flex-center">
       <div class="bg" v-show="data1Show"
            @click="this.data1Show=false;this.input5==''?this.input5Active=false:this.input5Active=true"></div>
@@ -168,6 +169,7 @@ export default ({
   },
   data() {
     return {
+      loading:false,//loading Module
       startDate: null,
       input: '',
       search: '',
@@ -266,7 +268,7 @@ export default ({
         }
       ],
       count: 0,
-      address: null,
+      address: null || sessionStorage.getItem('address'),
     }
   },
   mounted() {

@@ -1,16 +1,24 @@
 import { createRouter,  createWebHistory } from 'vue-router'
 const routes = [
     {
-        path: '/create1',
-        component: () => import('@/views/create1/index')
-    },
-    {
         path: '/',
         redirect: 'home'
     },
     {
+        path: '/create1',
+        component: () => import('@/views/create1/index')
+    },
+    {
+        path: '/select',
+        component: () => import('@/views/home/details')
+    },
+    {
         path: '/home',
-        component: () => import('@/views/home/index')
+        component: () => import('@/views/home/index'),
+        meta: {
+            keepAlive: true // need to keepAlive
+        }
+
     },
     {
         path: '/ended',
@@ -19,6 +27,10 @@ const routes = [
     {
         path: '/create',
         component: () => import('@/views/create/index')
+    },
+    {
+        path: '/profile',
+        component: () => import('@/views/profile/index')
     },
 ]
 

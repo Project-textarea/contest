@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading-bar :show="loading"></loading-bar>
     <div class="container flex flex-center">
       <!-- user-section-->
       <user-navigation @getAccounts='getAccounts'></user-navigation>
@@ -116,6 +117,7 @@ export default ({
   },
   data() {
     return {
+      loading:false,//loading Module
       input:'',
       search: '',
       focus: false,
@@ -270,7 +272,7 @@ export default ({
         },
       ],
       count: 0,
-      address: null,
+      address: null || sessionStorage.getItem('address'),
     }
   },
   mounted() {

@@ -5,7 +5,7 @@
 
 <template>
   <notifications  position="center center" class="notifications" width="500" />
-  <router-view />
+  <router-view keep-alive />
 </template>
 
 <style  lang="less">
