@@ -3,28 +3,31 @@
     <loading-bar :show="loading"></loading-bar>
     <div class="container flex flex-center">
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
-      <!-- user-section-->
+      <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <section class="user-section nft-search-section">
-        <div class="section-title">Word in game</div>
+        <div class="section-title">Word in contest</div>
         <div class="form-container wrapper-flex-row" :class="focus?'focus':''" @click="$refs.search.focus()">
-          <a href="#">
-            <span class="iconfont">&#xe60a;</span>
+          <a href="#" class="iphone-media">
+            <span class="iconfont no-selection">&#xe8d6;</span>
+          </a>
+          <a href="#" class="pc-media">
+            <span class="iconfont no-selection">&#xe86e;</span>
           </a>
           <input type="text" class="text" v-model="search" ref="search" @focus="focus=true" @blur="focus=false"/>
         </div>
         <ul class="list">
           <li :class="index==0?'active':''" v-for="(item,index) in wordList" :key="index">
             <text>{{ item.text }}</text>
-            <div class="share">
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xf24d;</span>
+            <div class="share" v-if="index==0">
+              <a class="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.baidu.com"
+                 target="_blank">
+                <span class="iconfont">&#xe63d;</span>
               </a>
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xe7d7;</span>
+              <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fwww.baidu.com" target="_blank">
+                <span class="iconfont">&#xe601;</span>
               </a>
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xe606;</span>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.baidu.com" target="_blank">
+                <span class="iconfont">&#xecb1;</span>
               </a>
             </div>
           </li>
@@ -34,7 +37,7 @@
         <div class="section-title">Sentences for competition</div>
         <div class="list ">
           <ul class="wrapper-flex-wrap list-container">
-            <li>
+            <li class="no-first">
               <div class="desc">
                 <div class="info" style="word-break: break-all; ">
                   12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -53,16 +56,16 @@
                   </div>
                 </div>
                 <div class="reward wrapper-flex-row">
-                  <i class="icon">
-                    <img src="@/assets/images/icon-2.png" width="100%"/>
+                  <i class="icon iconfont">
+                    &#xe665;
                   </i>
-                  <div class="name">36:13:45</div>
+                  <div class="name">End time: 2022/07/29 18:00</div>
                 </div>
                 <div class="reward wrapper-flex-row">
-                  <i class="icon">
-                    <img src="@/assets/images/icon-3.png" width="100%"/>
+                  <i class="icon iconfont">
+                    &#xe74e;
                   </i>
-                  <div class="name">TEXT; BAYC</div>
+                  <div class="name"><a href="#" target="_blank">TEXT</a>; <a href="#" target="_blank">BAYC</a></div>
                 </div>
               </div>
             </li>
@@ -71,17 +74,17 @@
                 <div class="info">{{ item.text }}
                 </div>
                 <div class="doing wrapper-flex-row">
-                  <div class="share">
-                    <a href="#" target="_blank">
-                      <span class="iconfont">&#xf24d;</span>
-                    </a>
-                    <a href="#" target="_blank">
-                      <span class="iconfont">&#xe7d7;</span>
-                    </a>
-                    <a href="#" target="_blank">
-                      <span class="iconfont">&#xe606;</span>
-                    </a>
-                  </div>
+<!--                  <div class="share">-->
+<!--                    <a href="#" target="_blank">-->
+<!--                      <span class="iconfont">&#xf24d;</span>-->
+<!--                    </a>-->
+<!--                    <a href="#" target="_blank">-->
+<!--                      <span class="iconfont">&#xe7d7;</span>-->
+<!--                    </a>-->
+<!--                    <a href="#" target="_blank">-->
+<!--                      <span class="iconfont">&#xe606;</span>-->
+<!--                    </a>-->
+<!--                  </div>-->
 <!--                  <div class="vote">-->
 <!--                    <span class="iconfont">&#xe602;</span>-->
 <!--                    Vote-->

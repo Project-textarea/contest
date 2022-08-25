@@ -1,46 +1,56 @@
 <template>
-  <!-- user-section-->
-  <section class="user-section">
-    <div :class="['user-wallet',user==null?'':'fixed']">
-      <a class="connect-wallet" @click="getUserInfo()" v-if="user==null">
-<!--      <span>-->
-<!--        <div class="icon">-->
-<!--          <svg t="1658223861901" class="icon" viewBox="0 0 1028 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"-->
-<!--               p-id="2397" width="23" height="23"><path-->
-<!--              d="M906.649269 135.236054l-785.89916 0c-66.581418 0-120.750131 54.168714-120.750131 120.750131l0 511.653099c0 66.581418 54.168714 120.750131 120.750131 120.750131l785.89916 0c66.581418 0 120.750131-54.168714 120.750131-120.750131l0-511.653099C1027.3994 189.404768 973.230686 135.236054 906.649269 135.236054zM906.649269 851.550393l-785.89916 0c-46.26879 0-83.911108-37.642319-83.911108-83.911108l0-511.653099c0-46.26879 37.642319-83.911108 83.911108-83.911108l785.89916 0c46.26879 0 83.911108 37.642319 83.911108 83.911108l0 132.502803-375.97293 0c-66.581418 0-120.750131 54.168714-120.750131 120.750131l0 25.060769c0 66.581418 54.168714 120.750131 120.750131 120.750131l375.97293 0 0 112.589264C990.560377 813.908074 952.918058 851.550393 906.649269 851.550393zM990.188917 425.328012l0 192.882985L614.587446 618.210997c-46.26879 0-83.911108-37.642319-83.911108-83.911108l0-25.060769c0-46.26879 37.642319-83.911108 83.911108-83.911108L990.188917 425.328012zM848.830422 576.899102c30.093389 0 54.489008-24.394596 54.489008-54.487985 0-30.093389-24.39562-54.489008-54.489008-54.489008-30.092365 0-54.487985 24.39562-54.487985 54.489008C794.342437 552.503483 835.110956 576.899102 848.830422 576.899102z"-->
-<!--              p-id="2398" fill="#031213"></path></svg>-->
-<!--        </div>-->
-        Connect Wallet
-<!--      </span>-->
-      </a>
-      <div v-else class="flex flex-zBetween flex-ac">
-        <a class="logout" @click="disconnect">Log out</a>
-        <div class="address">
-          {{ hideAddress(user) }}
+  <div>
+    <!-- user-section-->
+    <section class="header-pc" style="width: 100%">
+      <div :class="['user-wallet',user==null?'':'fixed']">
+        <a class="connect-wallet  no-selection" @click="getUserInfo()" v-if="user==null">
+          Connect Wallet
+        </a>
+        <div v-else class="flex flex-zBetween flex-ac">
+          <a class="logout  no-selection" @click="disconnect" >Log out</a>
+          <div class="address">
+            {{ hideAddress(user) }}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="user-wallet1 logo-sum">
-      <img src="@/assets/images/logo.png"/>
-      <img src="@/assets/images/logo2.png" class="logo2"/>
-      <img src="@/assets/images/logo1.png" class="logo1"/>
-    </div>
-    <div class="user-nav-list">
-      <a :class="[$route.path==item.router?'active':'']" v-for="(item,index) in navList" :key="index"
-         @click="linkTo(item)">
-        <span class="iconfont-nav" v-show="index==3">&#xe60b;</span>
-        <span class="iconfont-nav" v-show="index==2">&#xe693;</span>
-        <span class="iconfont-nav" v-show="index==1"
-              style="margin-top: 2px;display: inline-block;vertical-align: top;margin-right: -1px;font-size: 25px;">&#xe652;</span>
-        <span class="iconfont-nav"
-              style="font-size: 30px;margin-right: -4px;display: inline-block;margin-top: -1px;vertical-align: top;"
-              v-show="index==4">&#xe61f;</span>
-        <span class="iconfont-nav" style="font-size: 22px" v-show="index==0">&#xe603;</span>
-        {{ item.name }}
-      </a>
+      <div class="user-wallet1 logo-sum no-selection">
+        <img src="@/assets/images/logo.png"/>
+        <img src="@/assets/images/logo2.png" class="logo2"/>
+        <img src="@/assets/images/logo1.png" class="logo1"/>
+      </div>
+      <div class="user-nav-list no-selection">
+        <a :class="[$route.path==item.router?'active':'']" v-for="(item,index) in navList" :key="index"
+           @click="linkTo(item)">
+          <span class="iconfont-nav" v-show="index==3">&#xe60b;</span>
+          <span class="iconfont-nav" v-show="index==2">&#xe693;</span>
+          <span class="iconfont-nav" v-show="index==1"
+                style="margin-top: 2px;display: inline-block;vertical-align: top;margin-right: -1px;font-size: 25px;">&#xe652;</span>
+          <span class="iconfont-nav"
+                style="font-size: 30px;margin-right: -4px;display: inline-block;margin-top: -1px;vertical-align: top;"
+                v-show="index==4">&#xe61f;</span>
+          <span class="iconfont-nav" style="font-size: 22px" v-show="index==0">&#xe603;</span>
+          {{ item.name }}
+        </a>
 
+      </div>
+    </section>
+    <div class="header-iphone">
+      <div class="user-nav-list no-selection flex flex-ac">
+        <a :class="[$route.path==item.router?'active':'']" v-for="(item,index) in navList" :key="index"
+           @click="linkTo(item)">
+          <span class="iconfont-nav" style="font-size: 23px" v-show="index==3">&#xe60b;</span>
+          <span class="iconfont-nav" v-show="index==2">&#xe693;</span>
+          <span class="iconfont-nav" v-show="index==1">&#xe652;</span>
+          <span class="iconfont-nav" style="font-size: 30px" v-show="index==4">&#xe61f;</span>
+          <span class="iconfont-nav" style="font-size: 22px"  v-show="index==0">&#xe603;</span>
+        </a>
+
+      </div>
+      <a class="icon-select">
+        <span class="iconfont">&#xe604;</span>
+      </a>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -136,3 +146,105 @@ export default {
   },
 }
 </script>
+<style lang="less" scoped>
+.header-iphone{
+  display: none;
+  .user-nav-list {
+    span{
+      font-size: 25px;
+      padding:16px 2rem;
+      line-height: 1;
+      box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+      display: block;
+    }
+    a {
+      width: 25%;
+      font-size: 24px!important;
+      color: #999999;
+      line-height: 1;
+      background: transparent;
+      text-align: center;
+      //&:nth-child(1){
+      //  //width: 18.5%;
+      //  span{
+      //    text-align: left;
+      //  }
+      //}
+      &:nth-child(5){
+        //margin-left: -0.5%;
+        //padding-left: 0;
+        //width: 16%;
+        span{
+          text-align: left;
+        }
+      }
+      &:hover {
+        color: #ffffff;
+      }
+
+      &.active {
+        color: #ffffff;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1100px) {
+  .header-pc {
+    display: none;
+  }
+  .header-iphone{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #0a3031;
+    z-index:7;
+    border-top:0.5px solid #2b4b4f;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+    .user-nav-list {
+      a{
+        padding: 0;
+      }
+      span{
+        display: block;
+      padding:16px 2rem!important;
+      }
+    }
+
+  }
+  .header-iphone .icon-select{
+    position: fixed;
+    font-size: 3rem;
+    width:5.5rem;
+    height:5.5rem;
+    background: #222222;
+    //background: linear-gradient(to top,#2d8081,#0a5354);
+    padding:0 8px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    //border: 0.5px solid #ffffff;
+    bottom:90px;
+    right: 3rem;
+    z-index: 100;
+    text-align: center;
+    //line-height:34px;
+    line-height:5.5rem;
+    //width:6rem;
+    //background: #000000;
+    span{
+      //margin-left: -1rem;
+      display:block;
+      //margin-bottom: -8px;
+      //color: #8ecedb;
+      text-align: center;
+      //font-size: 40px!important;
+      font-size: 2rem;
+      color: #ffffff;
+    }
+  }
+}
+</style>

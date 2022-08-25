@@ -7,7 +7,8 @@
       <div class="bg" v-show="data2Show"
            @click="this.data2Show=false;this.input6==''?this.input6Active=false:this.input6Active=true"></div>
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
+      <!-- user-section-->
+      <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section other-search-section">
         <div class="section-title">Word in wallet</div>
@@ -32,9 +33,11 @@
             <dl>
               <dd class="wrapper-flex-row show-line" :class="input1Active==true?'active':''">
                 <div class="dd-tit">Competition introduction:</div>
-                <div :class="[input1.length>0?'animation':'','text-container text text1']">
+                <div :class="[input1.length>0||input1focus?'animation':'','text-container text text1']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input1" class="text "
                          maxlength="100"
+                         @compositionstart="input1focus=true"
+                         @compositionend="input1focus=false"
                          @blur="blurEvent(this.input1,1)" @focus="focusEvent(this.input1,1)">
                   <h6 class="placeholder">NFT Contract address</h6>
                 </div>
@@ -42,8 +45,10 @@
               </dd>
               <dd class="wrapper-flex-row show-line" :class="[input2Active?'active':'',doing1?'doing':'',ended1?'doing active':'green-input']">
                 <div class="dd-tit">Add 1st Prize:</div>
-                <div :class="[input2.length>0?'animation':'','text-container text text2']">
+                <div :class="[input2.length>0||input2focus>0?'animation':'','text-container text text2']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input2" class="text text2"
+                         @compositionstart="input2focus=true"
+                         @compositionend="input2focus=false"
                          @blur="blurEvent(this.input2,2)" @focus="focusEvent(this.input2,2)">
                   <h6 class="placeholder">NFT Contract address</h6>
                 </div>
@@ -56,8 +61,10 @@
               </dd>
               <dd class="wrapper-flex-row show-line" :class="[input3Active?'active':'',doing2?'doing':'',ended2?'doing active':'green-input']">
                 <div class="dd-tit">Add 2st Prize:</div>
-                <div :class="[input3.length>0?'animation':'','text-container text text2']">
+                <div :class="[input3.length>0||input3focus>0?'animation':'','text-container text text2']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input3" class="text text2"
+                         @compositionstart="input3focus=true"
+                         @compositionend="input3focus=false"
                          @blur="blurEvent(this.input3,3)" @focus="focusEvent(this.input3,3)">
                   <h6 class="placeholder">NFT Contract address</h6>
                 </div>
@@ -71,8 +78,10 @@
               <dd class="wrapper-flex-row show-line" :class="[input4Active?'active':'',doing3?'doing':'',ended3?'doing active':'green-input']">
                 <div class="dd-tit">Add 3st Prize:</div>
 
-                <div :class="[input4.length>0?'animation':'','text-container text text2']">
+                <div :class="[input4.length>0||input4focus>0?'animation':'','text-container text text2']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input4" class="text text2"
+                         @compositionstart="input4focus=true"
+                         @compositionend="input4focus=false"
                          @blur="blurEvent(this.input4,4)" @focus="focusEvent(this.input4,4)">
                   <h6 class="placeholder">NFT Contract address</h6>
                 </div>
@@ -88,8 +97,10 @@
                   <div class="wrapper-flex-row">
                     <div class="dd-tit" @click="this.data1Show?this.data1Show=false:''">Starting time:</div>
                     <div class="re">
-                      <div :class="[input5.length>0?'animation':'','text-container text text2']">
+                      <div :class="[input5.length>0||input5focus>0?'animation':'','text-container text text2']">
                         <input spellcheck='false' type="text" placeholder="" v-model="input5" class="text text2" readonly
+                               @compositionstart="input5focus=true"
+                               @compositionend="input5focus=false"
                                @click="focusEvent(this.input5,5)" id="date-text1-2">
                         <h6 class="placeholder">Select a start time</h6>
                       </div>
@@ -102,8 +113,10 @@
                   <div class="wrapper-flex-row">
                     <div class="dd-tit" @click="this.data2Show?this.data2Show=false:''">Ending time:</div>
                     <div class="re">
-                      <div :class="[input6.length>0?'animation':'','text-container text text2']">
+                      <div :class="[input6.length>0||input6focus>0?'animation':'','text-container text text2']">
                         <input spellcheck='false' type="text" placeholder="" v-model="input6" class="text text3" readonly
+                               @compositionstart="input5focus=true"
+                               @compositionend="input6focus=false"
                                @click="focusEvent(this.input6,6)">
                         <h6 class="placeholder">Select an end time</h6>
                       </div>
@@ -123,6 +136,8 @@
 </template>
 
 <script>
+import 'element-plus/es/components/message/style/css'
+import { ElMessage } from 'element-plus'
 import noWallet from '@/components/no-wallet/index'
 import userNavigation from '@/components/user-navigation/index'
 import $store from '@/store/index.js'
@@ -229,16 +244,22 @@ export default ({
       ],
       count: 0,
       address: null || sessionStorage.getItem('address'),
+      input1focus: false,
       input1Active: false,
       input1: '',
+      input2focus: false,
       input2Active: false,
       input2: '',
+      input3focus: false,
       input3Active: false,
       input3: '',
+      input4focus: false,
       input4Active: false,
       input4: '',
+      input5focus: false,
       input5Active: false,
       input5: '',
+      input6focus: false,
       input6Active: false,
       input6: '',
       doing1: false,
@@ -288,45 +309,51 @@ export default ({
   methods: {
     submit(){
       if(this.input1==''){
-        this.$notify({
-          type: 'warn',
-          text: "Competition introduction cannot be empty",
-        });
+        // this.$notify({
+        //   type: 'warn',
+        //   text: "Competition introduction cannot be empty",
+        // });
+        ElMessage({
+          message: "Competition introduction cannot be empty",
+          type: 'waring',
+        })
         return
       }
       if(this.input2==''){
-        this.$notify({
-          type: 'warn',
-          text: "Please add the address of the 1st prize NFT",
-        });
+        ElMessage({
+          message: "Please add the address of the 1st prize NFT",
+          type: 'waring',
+        })
         return
       }
       if(this.input3==''){
-        this.$notify({
-          type: 'warn',
-          text: "Please add the address of the 2st prize NFT",
-        });
+        ElMessage({
+          message: "Please add the address of the 2st prize NFT",
+          type: 'waring',
+        })
+
         return
       }
       if(this.input4==''){
-        this.$notify({
-          type: 'warn',
-          text: "Please add the address of the 3st prize NFT",
-        });
+          ElMessage({
+            message: "Please add the address of the 3st prize NFT",
+            type: 'waring',
+          })
         return
       }
       if(this.input5==''){
-        this.$notify({
-          type: 'warn',
-          text: "Please select a start time",
-        });
+
+        ElMessage({
+          message: "Please select a start time",
+          type: 'waring',
+        })
         return
       }
       if(this.input6==''){
-        this.$notify({
-          type: 'warn',
-          text: "Please select an end time",
-        });
+        ElMessage({
+          message: "Please select an end time",
+          type: 'waring',
+        })
         return
       }
     },
@@ -420,11 +447,10 @@ export default ({
         }
         if (clas == 6) {
           if (that.startDate == null) {
-            this.$notify({
-              text: 'Please choose a start date first!',
-              type: 'warn',
-              duration: 3000,
-            });
+            ElMessage({
+              message:  'Please choose a start date first!',
+              type: 'waring',
+            })
             return
           }
           this.input6Active = true

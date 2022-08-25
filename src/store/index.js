@@ -4,7 +4,7 @@ const store = createStore({
     state () {
         return {
             count: 0,
-            user:null
+            user:null || sessionStorage.getItem('address'),
         }
     },
     mutations: {
@@ -21,7 +21,8 @@ const store = createStore({
                 ethereum.request({
                     method: 'eth_requestAccounts'
                 }).then((accounts) => {
-                    context.commit("setUser",accounts[0])
+                    sessionStorage.setItem('address',accounts[0])
+                    context.commit("setUser",sessionStorage.getItem('address'))
                     resolve(accounts[0])
                 }).catch((reason) => {
                     // console.log('reason', reason)
@@ -37,7 +38,8 @@ const store = createStore({
             })
         },
         disconnect(context){
-            context.commit("setUser",null)
+            context.commit("setUser",null);
+            sessionStorage.removeItem('address')
         },
     }
 })

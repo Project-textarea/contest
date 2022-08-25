@@ -3,22 +3,23 @@
     <loading-bar :show="loading"></loading-bar>
     <div class="container flex flex-center">
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts'></user-navigation>
+      <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section other-search-section">
-        <div class="section-title">Word in game</div>
+        <div class="section-title">Word in contest</div>
         <ul class="list" v-if="address!=null">
           <li :class="index==0?'active':''" v-for="(item,index) in wordList" :key="index">
             <text>{{ item.text }}</text>
-            <div class="share">
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xf24d;</span>
+            <div class="share" v-if="index==0">
+              <a class="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.baidu.com"
+                 target="_blank">
+                <span class="iconfont">&#xe611;</span>
               </a>
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xe7d7;</span>
+              <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fwww.baidu.com" target="_blank">
+                <span class="iconfont">&#xe74e;</span>
               </a>
-              <a href="#" target="_blank">
-                <span class="iconfont">&#xe606;</span>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.baidu.com" target="_blank">
+                <span class="iconfont">&#xe620;</span>
               </a>
             </div>
           </li>

@@ -227,3 +227,186 @@
     //margin-top: 300px;
   }
 }
+@media screen and (max-width: 1100px) {
+
+  .create1-container {
+    padding-bottom: 20px;
+    width: 90%;
+    margin: auto;
+    .create1-title {
+      padding: 50px 0 25px;
+      font-size: 18px;
+    }
+
+    .text-container{
+      .placeholder{
+        font-size: 15px;
+        line-height: 30px;
+      }
+      &.animation{
+        .placeholder{
+          left: 30px;
+          opacity: 0;
+        }
+      }
+    }
+    .show-line{
+      border-bottom: 1px solid #162e31;
+      //position: relative;
+      box-sizing: border-box;
+      padding-left: 5px;
+      padding-right: 5px;
+      display: block;
+      &:after{
+        content: '';
+        width: 1px;
+        height: 7px;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #162e31;
+      }
+      &:before{
+        content: '';
+        width: 1px;
+        height: 7px;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #162e31;
+      }
+      &.active{
+        border-color:#fff;
+
+      }
+      &.active:before,
+      &.active:after{
+        background:#fff;
+      }
+      &.doing{
+        a.icon{
+          background: #ffffff;
+        }
+      }
+      &.ended{
+        a.icon{
+          background: #ffffff;
+          span:nth-child(1){
+            display: none;
+          }
+        }
+      }
+      &.green-input{
+        .text{
+          color: @ButtonActiveBg;
+        }
+      }
+    }
+    dl{
+      .span{
+        width: 30px;
+        display: inline;
+        background: transparent;
+        border: 0;
+        font-size:22px;
+        color: #ffffff;
+        text-align: center;
+      }
+      .data-sum{
+        font-size:16px;
+        display: block;
+        .data{
+          width: 100%;
+          .wrapper-flex-row{
+            display: block;
+          }
+          .re{
+            width:100%;
+          }
+          .text-container .placeholder{
+            font-size: 16px;
+          }
+          .text{
+            width:100%;
+            font-size: 16px;
+          }
+        }
+      }
+      dd{
+        position: relative;
+        margin-bottom: 20px;
+        .dd-tit{
+          font-size:16px;
+          line-height: 1;
+        }
+        .text{
+          line-height: 25px;
+          font-size:16px;
+          &.text1{
+            max-width: 100%;
+            margin-right: 80px;
+            box-sizing: border-box;
+          }
+          &.text2{
+            max-width: 680px;
+          }
+        }
+        .data{
+          width: 400px;
+          .text{
+            cursor: pointer;
+          }
+          .text2{
+            max-width: 200px;
+          }
+          .text3{
+            max-width: 220px;
+          }
+        }
+      }
+      a.icon{
+        position: absolute;
+        bottom: 10px;
+        background: #162e31;
+        right: 10px;
+        div{
+          width: 16px;
+          height: 16px;
+          position: relative;
+        }
+        span:nth-child(1){
+          width: 2px;
+          height: 8px;
+          display: block;
+          position: absolute;
+          bottom: 4px;
+          right: 7px;
+          background: #000000;
+        }
+        span:nth-child(2){
+          height: 2px;
+          width: 8px;
+          display: block;
+          position: absolute;
+          bottom: 7px;
+          left:  4px;
+          background: #000000;
+        }
+      }
+    }
+    .len{
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .button-game{
+      font-size: 16px;
+      line-height: 50px;
+      margin-top: 30px;
+    }
+    .button-game.addTop{
+      //margin-top: 300px;
+    }
+  }
+}

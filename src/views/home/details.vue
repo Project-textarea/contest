@@ -3,13 +3,13 @@
     <loading-bar :loadingShow="loadingShow"></loading-bar>
     <div class="container flex flex-center">
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
+      <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section">
-        <div class="section-title">Word in game</div>
+        <div class="section-title">Word in contest</div>
         <div class="form-container wrapper-flex-row" :class="focus?'focus':''" @click="$refs.search.focus()">
           <a href="#">
-            <span class="iconfont">&#xe60a;</span>
+            <span class="iconfont no-selection">&#xe86e;</span>
           </a>
           <input type="text" class="text" v-model="search" ref="search" @focus="focus=true" @blur="focus=false"/>
         </div>
@@ -19,62 +19,31 @@
             <div class="share" v-if="index==0">
               <a class="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.baidu.com"
                  target="_blank">
-                <span class="iconfont">&#xf24d;</span>
+                <span class="iconfont">&#xe63d;</span>
               </a>
               <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fwww.baidu.com" target="_blank">
-                <span class="iconfont">&#xe7d7;</span>
+                <span class="iconfont">&#xe601;</span>
               </a>
               <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.baidu.com" target="_blank">
-                <span class="iconfont">&#xe606;</span>
+                <span class="iconfont">&#xecb1;</span>
               </a>
             </div>
           </li>
         </ul>
       </section>
       <section class="user-section sentence-container">
-        <div class="section-title"><span class="iconfont-nav icon" @click="returnPage">&#xe8a4;</span>Sentences for you
+        <div class="section-title"><span class="iconfont-nav icon" @click="returnPage">&#xe7ed;</span>Choose a sentence in your wallet to compete
         </div>
-        <div class="list ">
-          <ul class="wrapper-flex-wrap list-container">
-            <li class="no-first">
-              <div class="desc">
-                <div class="info" style="word-break: break-all; ">
-                  12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-                </div>
-                <div class="reward wrapper-flex-row">
-                  <i class="icon">
-                    <img src="@/assets/images/icon-1.png" width="100%"/>
-                  </i>
-
-                  <div class="name">1st: <a href="#" target="_blank">Opensea</a>; <a href="#"
-                                                                                     target="_blank">Etherscan</a><br/>
-                    2st: <a href="#" target="_blank">Opensea</a>; <a href="#"
-                                                                     target="_blank">Etherscan</a><br/>
-                    3st: <a href="#" target="_blank">Opensea</a>; <a href="#"
-                                                                     target="_blank">Etherscan</a>
-                  </div>
-                </div>
-                <div class="reward wrapper-flex-row">
-                  <i class="icon">
-                    <img src="@/assets/images/icon-2.png" width="100%"/>
-                  </i>
-                  <div class="name">36:13:45</div>
-                </div>
-                <div class="reward wrapper-flex-row">
-                  <i class="icon">
-                    <img src="@/assets/images/icon-3.png" width="100%"/>
-                  </i>
-                  <div class="name">TEXT; BAYC</div>
-                </div>
-              </div>
-            </li>
+        <div class="list " style="position: relative">
+          <div v-if="sentenceList.length==0" class="no-sentenceList-text">No sentence in your wallet, <a href="https://test.textarea.xyz/sentence" target="_blank">go make a sentence<span class="iconfont-nav icon">&#xe7ed;</span></a></div>
+          <ul class="wrapper-flex-wrap list-container" v-else>
             <li v-for="(item,index) in sentenceList" :key="index">
               <div class="content">
                 <div class="info">{{ item.text }}
                 </div>
-                <div class="doing wrapper-flex-row">
-                  <a class="button">select sentence to contest</a>
-                </div>
+<!--                <div class="doing wrapper-flex-row">-->
+<!--                  <a class="button">select sentence to contest</a>-->
+<!--                </div>-->
               </div>
             </li>
           </ul>
@@ -251,6 +220,7 @@ export default ({
           text: 'Punctuation; space; enter; will be considered as the basis for judging sentence difference.',
         },
       ],
+      // sentenceList:[],
       count: 0,
       address: null || sessionStorage.getItem('address'),
     }
@@ -297,10 +267,7 @@ export default ({
         // console.log('this.loadingShow',this.loadingShow);
       })
       setTimeout(() => {
-        this.$notify({
-          type: 'success',
-          text: "successful vote!",
-        });
+        this.$message.success("successful vote!");
         this.loadingShow = false;
       }, 1000)
     }
@@ -315,3 +282,21 @@ export default ({
   },
 })
 </script>
+<style lang="less" scoped>
+.sentence-container{
+  .list{
+    li{
+      position: relative;
+      .info{
+        color: #2d8081;
+      }
+    }
+    li:hover{
+      cursor: pointer;
+      .info{
+        color: #ffffff;
+      }
+    }
+  }
+}
+</style>

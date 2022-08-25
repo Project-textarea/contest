@@ -7,18 +7,21 @@
       <div class="bg" v-show="data2Show"
            @click="this.data2Show=false;this.input6==''?this.input6Active=false:this.input6Active=true"></div>
       <!-- user-section-->
-      <user-navigation @getAccounts='getAccounts' :user="address"></user-navigation>
+      <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section other-search-section">
         <div class="section-title">Menu</div>
         <ul class="list" v-if="address!=null">
-          <li :class="[index==showIndex?'active':'','flex flex-zBetween']" v-for="(item,index) in navProfileList" :key="index" @click="navChangeIndex(index)">
-            <text>{{ item.text }}<div class="number">({{item.number}})</div></text>
+          <li :class="[index==showIndex?'active':'','flex flex-zBetween']" v-for="(item,index) in navProfileList"
+              :key="index" @click="navChangeIndex(index)">
+            <text>{{ item.text }}
+              <div class="number">({{ item.number }})</div>
+            </text>
 
           </li>
         </ul>
         <div v-else>
-          <no-wallet  @getAccounts='getAccounts' :user="address"></no-wallet>
+          <no-wallet @getAccounts='getAccounts' :user="address"></no-wallet>
         </div>
       </section>
       <!--sentence-container-->
@@ -34,23 +37,6 @@
                 <li v-for="(item,index) in sentenceList" :key="index">
                   <div class="content">
                     <div class="info">{{ item.text }}
-                    </div>
-                    <div class="doing wrapper-flex-row">
-                      <div class="share">
-                        <a href="#" target="_blank">
-                          <span class="iconfont">&#xf24d;</span>
-                        </a>
-                        <a href="#" target="_blank">
-                          <span class="iconfont">&#xe7d7;</span>
-                        </a>
-                        <a href="#" target="_blank">
-                          <span class="iconfont">&#xe606;</span>
-                        </a>
-                      </div>
-                      <div class="vote">
-                        <span class="iconfont">&#xe602;</span>
-                        Vote
-                      </div>
                     </div>
                   </div>
                 </li>
@@ -75,15 +61,18 @@
                     </div>
                     <div class="reward wrapper-flex-row">
                       <i class="icon">
-                        <img src="@/assets/images/icon-2.png" width="100%"/>
+<!--                        <img src="@/assets/images/icon-2.png" width="100%"/>-->
+                        <img src="@/assets/images/icon-2.png" width="25"/>
                       </i>
-                      <div class="name">36:13:45</div>
+                      <div class="name">
+                        <countdown endTime="1659087210000" endText="End time: 2022/07/29 18:00"/>
+                      </div>
                     </div>
                     <div class="reward wrapper-flex-row">
                       <i class="icon">
                         <img src="@/assets/images/icon-3.png" width="100%"/>
                       </i>
-                      <div class="name">TEXT; BAYC</div>
+                      <div class="name"><a href="#" target="_blank">TEXT</a>; <a href="#" target="_blank">BAYC</a></div>
                     </div>
                   </div>
                 </li>
@@ -108,15 +97,18 @@
                     </div>
                     <div class="reward wrapper-flex-row">
                       <i class="icon">
-                        <img src="@/assets/images/icon-2.png" width="100%"/>
+                        <!--                        <img src="@/assets/images/icon-2.png" width="100%"/>-->
+                        <img src="@/assets/images/icon-2.png" width="25"/>
                       </i>
-                      <div class="name">36:13:45</div>
+                      <div class="name">
+                        <countdown endTime="1659087210000" endText="End time: 2022/07/29 18:00"/>
+                      </div>
                     </div>
                     <div class="reward wrapper-flex-row">
                       <i class="icon">
                         <img src="@/assets/images/icon-3.png" width="100%"/>
                       </i>
-                      <div class="name">TEXT; BAYC</div>
+                      <div class="name"><a href="#" target="_blank">TEXT</a>; <a href="#" target="_blank">BAYC</a></div>
                     </div>
                   </div>
                 </li>
@@ -127,19 +119,6 @@
                 <li v-for="(item,index) in sentenceList" :key="index">
                   <div class="content">
                     <div class="info">{{ item.text }}
-                    </div>
-                    <div class="doing wrapper-flex-row">
-                      <div class="share">
-                        <a href="#" target="_blank">
-                          <span class="iconfont">&#xf24d;</span>
-                        </a>
-                        <a href="#" target="_blank">
-                          <span class="iconfont">&#xe7d7;</span>
-                        </a>
-                        <a href="#" target="_blank">
-                          <span class="iconfont">&#xe606;</span>
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </li>
@@ -155,6 +134,7 @@
 </template>
 
 <script>
+import countdown from  '@/components/count-down/index'
 import noWallet from '@/components/no-wallet/index'
 import userNavigation from '@/components/user-navigation/index'
 import $store from '@/store/index.js'
@@ -165,11 +145,12 @@ import $ from "jquery";
 export default ({
   components: {
     noWallet,
+    countdown,
     userNavigation
   },
   data() {
     return {
-      loading:false,//loading Module
+      loading: false,//loading Module
       startDate: null,
       input: '',
       search: '',
@@ -243,26 +224,26 @@ export default ({
       navProfileList: [
         {
           text: 'Owned Sentence',
-          number:1,
+          number: 1,
         },
         {
           text: 'Initiated Contest',
-          number:23,
+          number: 23,
         },
         {
           text: 'Participated Contest',
-          number:100,
+          number: 100,
         },
         {
           text: 'Voted Sentence',
-          number:895,
+          number: 895,
         },
       ],
-      list:[
+      list: [
         {
-          info:'',
-          Opensea:'Opensea',
-          Etherscan:'Etherscan',
+          info: '',
+          Opensea: 'Opensea',
+          Etherscan: 'Etherscan',
           reward2st: '0x466C...13Ac',
           reward3st: '0x466C...13Ac',
         }
@@ -276,11 +257,11 @@ export default ({
     $(window).resize(function () {
       $('.list-container li').css('min-height', $('.list-container').width() / 3);
     })
-    console.log($('.list-container').width() )
+    console.log($('.list-container').width())
   },
   watch: {
-    address(){
-      this.$nextTick(()=>{
+    address() {
+      this.$nextTick(() => {
         $('.list-container li').css('min-height', $('.list-container').width() / 3);
       })
     }
@@ -290,9 +271,9 @@ export default ({
      * @event navChangeIndex
      * @desc Toggle navigation Event
      * */
-    navChangeIndex(index){
-      this.showIndex=index
-      this.$nextTick(()=>{
+    navChangeIndex(index) {
+      this.showIndex = index
+      this.$nextTick(() => {
         $('.list-container li').css('min-height', $('.list-container').width() / 3);
       })
     },
@@ -302,7 +283,7 @@ export default ({
      * @desc Go to details page
      * @param id <Number>
      * */
-    toDetails(id){
+    toDetails(id) {
 
     },
     getAccounts(accounts) {

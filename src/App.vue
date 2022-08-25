@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <notifications  position="center center" class="notifications" width="500" />
+<!--  <notifications  position="center center" class="notifications" width="500" />-->
   <router-view keep-alive />
 </template>
 
