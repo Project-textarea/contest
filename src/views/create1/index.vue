@@ -11,25 +11,31 @@
       <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section other-search-section">
-        <div class="section-title">Word in wallet</div>
+        <div class="section-title"><i class="iconfont"
+                                      style="font-size:1.5rem;margin-right: 0.8rem;vertical-align: top;margin-top: 0.3rem;display: inline-block;color: #669ea0">&#xe64a;</i>Word
+          in wallet
+        </div>
         <ul class="list" v-if="address!=null">
           <li :class="index==0?'active':''" v-for="(item,index) in wordList" :key="index">
             <text>{{ item.text }}</text>
           </li>
         </ul>
         <div v-else>
-          <no-wallet  @getAccounts='getAccounts' :user="address"></no-wallet>
+          <no-wallet @getAccounts='getAccounts' :user="address"></no-wallet>
         </div>
       </section>
       <!--sentence-container-->
       <section class="user-section sentence-container">
-        <div class="section-title">Details of the contest</div>
+        <div class="section-title">
+          <img src="@/assets/images/pen.png" width="24"/>
+          Details of the contest
+        </div>
         <div class="list ">
           <div v-if="address==null">
           </div>
           <!--S create-container-->
           <div v-else class="create1-container">
-            <h2 class="create1-title">Word "FUCK" Sentence Contest</h2>
+            <h2 class="create1-title">Create a Sentence Contest using the word "XXXXXXXXX"</h2>
             <dl>
               <dd class="wrapper-flex-row show-line" :class="input1Active==true?'active':''">
                 <div class="dd-tit">Competition introduction:</div>
@@ -43,7 +49,8 @@
                 </div>
                 <div class="len">{{ input1.length }}/100</div>
               </dd>
-              <dd class="wrapper-flex-row show-line" :class="[input2Active?'active':'',doing1?'doing':'',ended1?'doing active':'green-input']">
+              <dd class="wrapper-flex-row show-line"
+                  :class="[input2Active?'active':'',doing1?'doing':'',ended1?'doing active':'green-input']">
                 <div class="dd-tit">Add 1st Prize:</div>
                 <div :class="[input2.length>0||input2focus>0?'animation':'','text-container text text2']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input2" class="text text2"
@@ -59,7 +66,8 @@
                   </div>
                 </a>
               </dd>
-              <dd class="wrapper-flex-row show-line" :class="[input3Active?'active':'',doing2?'doing':'',ended2?'doing active':'green-input']">
+              <dd class="wrapper-flex-row show-line"
+                  :class="[input3Active?'active':'',doing2?'doing':'',ended2?'doing active':'green-input']">
                 <div class="dd-tit">Add 2st Prize:</div>
                 <div :class="[input3.length>0||input3focus>0?'animation':'','text-container text text2']">
                   <input spellcheck='false' type="text" placeholder="" v-model="input3" class="text text2"
@@ -75,7 +83,8 @@
                   </div>
                 </a>
               </dd>
-              <dd class="wrapper-flex-row show-line" :class="[input4Active?'active':'',doing3?'doing':'',ended3?'doing active':'green-input']">
+              <dd class="wrapper-flex-row show-line"
+                  :class="[input4Active?'active':'',doing3?'doing':'',ended3?'doing active':'green-input']">
                 <div class="dd-tit">Add 3st Prize:</div>
 
                 <div :class="[input4.length>0||input4focus>0?'animation':'','text-container text text2']">
@@ -98,7 +107,8 @@
                     <div class="dd-tit" @click="this.data1Show?this.data1Show=false:''">Starting time:</div>
                     <div class="re">
                       <div :class="[input5.length>0||input5focus>0?'animation':'','text-container text text2']">
-                        <input spellcheck='false' type="text" placeholder="" v-model="input5" class="text text2" readonly
+                        <input spellcheck='false' type="text" placeholder="" v-model="input5" class="text text2"
+                               readonly
                                @compositionstart="input5focus=true"
                                @compositionend="input5focus=false"
                                @click="focusEvent(this.input5,5)" id="date-text1-2">
@@ -114,7 +124,8 @@
                     <div class="dd-tit" @click="this.data2Show?this.data2Show=false:''">Ending time:</div>
                     <div class="re">
                       <div :class="[input6.length>0||input6focus>0?'animation':'','text-container text text2']">
-                        <input spellcheck='false' type="text" placeholder="" v-model="input6" class="text text3" readonly
+                        <input spellcheck='false' type="text" placeholder="" v-model="input6" class="text text3"
+                               readonly
                                @compositionstart="input5focus=true"
                                @compositionend="input6focus=false"
                                @click="focusEvent(this.input6,6)">
@@ -137,7 +148,7 @@
 
 <script>
 import 'element-plus/es/components/message/style/css'
-import { ElMessage } from 'element-plus'
+import {ElMessage} from 'element-plus'
 import noWallet from '@/components/no-wallet/index'
 import userNavigation from '@/components/user-navigation/index'
 import $store from '@/store/index.js'
@@ -152,7 +163,7 @@ export default ({
   },
   data() {
     return {
-      loading:false,//loading Module
+      loading: false,//loading Module
       startDate: null,
       input: '',
       search: '',
@@ -307,53 +318,64 @@ export default ({
     },
   },
   methods: {
-    submit(){
-      if(this.input1==''){
+    submit() {
+      if (this.input1 == '') {
         // this.$notify({
         //   type: 'warn',
         //   text: "Competition introduction cannot be empty",
         // });
-        ElMessage({
-          message: "Competition introduction cannot be empty",
-          type: 'waring',
-        })
+        if (document.getElementsByClassName('el-message').length === 0) {
+          ElMessage({
+            message: "Competition introduction cannot be empty",
+            type: 'waring',
+          })
+        }
         return
       }
-      if(this.input2==''){
-        ElMessage({
-          message: "Please add the address of the 1st prize NFT",
-          type: 'waring',
-        })
+      if (this.input2 == '') {
+        if (document.getElementsByClassName('el-message').length === 0) {
+          ElMessage({
+            message: "Please add the address of the 1st prize NFT",
+            type: 'waring',
+          })
+        }
         return
       }
-      if(this.input3==''){
-        ElMessage({
-          message: "Please add the address of the 2st prize NFT",
-          type: 'waring',
-        })
+      if (this.input3 == '') {
+        if (document.getElementsByClassName('el-message').length === 0) {
+          ElMessage({
+            message: "Please add the address of the 2st prize NFT",
+            type: 'waring',
+          })
+        }
 
         return
       }
-      if(this.input4==''){
+      if (this.input4 == '') {
+        if (document.getElementsByClassName('el-message').length === 0) {
           ElMessage({
             message: "Please add the address of the 3st prize NFT",
             type: 'waring',
           })
+        }
         return
       }
-      if(this.input5==''){
-
-        ElMessage({
-          message: "Please select a start time",
-          type: 'waring',
-        })
+      if (this.input5 == '') {
+        if (document.getElementsByClassName('el-message').length === 0) {
+          ElMessage({
+            message: "Please select a start time",
+            type: 'waring',
+          })
+        }
         return
       }
-      if(this.input6==''){
-        ElMessage({
-          message: "Please select an end time",
-          type: 'waring',
-        })
+      if (this.input6 == '') {
+        if (document.getElementsByClassName('el-message').length === 0) {
+          ElMessage({
+            message: "Please select an end time",
+            type: 'waring',
+          })
+        }
         return
       }
     },
@@ -447,10 +469,12 @@ export default ({
         }
         if (clas == 6) {
           if (that.startDate == null) {
-            ElMessage({
-              message:  'Please choose a start date first!',
-              type: 'waring',
-            })
+            if (document.getElementsByClassName('el-message').length === 0) {
+              ElMessage({
+                message: 'Please choose a start date first!',
+                type: 'waring',
+              })
+            }
             return
           }
           this.input6Active = true

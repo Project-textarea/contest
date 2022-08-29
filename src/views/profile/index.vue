@@ -10,7 +10,9 @@
       <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section other-search-section">
-        <div class="section-title">Menu</div>
+        <div class="section-title">
+          <i class="iconfont" style="font-size:1.5rem;margin-right: 0.3rem;vertical-align: top;margin-top: 0.3rem;display: inline-block;color: #669ea0">&#xe61d;</i>
+          Menu</div>
         <ul class="list" v-if="address!=null">
           <li :class="[index==showIndex?'active':'','flex flex-zBetween']" v-for="(item,index) in navProfileList"
               :key="index" @click="navChangeIndex(index)">
@@ -26,7 +28,9 @@
       </section>
       <!--sentence-container-->
       <section class="user-section sentence-container">
-        <div class="section-title">Details</div>
+        <div class="section-title">
+          <i class="iconfont" style="font-size:1.5rem;vertical-align: top;margin-top: 0.25rem;display: inline-block;color: #669ea0">&#xe61e;</i>
+          Details</div>
         <div class="list ">
           <div v-if="address==null">
 
@@ -50,8 +54,12 @@
                       12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
                     </div>
                     <div class="reward wrapper-flex-row">
-                      <i class="icon">
-                        <img src="@/assets/images/icon-1.png" width="100%"/>
+
+                      <i class="icon iconfont pc-media">
+                        &#xe6b6;
+                      </i>
+                      <i class="icon iconfont iphone-media">
+                        &#xe8fa;
                       </i>
                       <div class="name">1st: <a href="#" target="_blank">Opensea</a>; <a href="#"
                                                                                          target="_blank">Etherscan</a><br/>
@@ -60,17 +68,22 @@
                       </div>
                     </div>
                     <div class="reward wrapper-flex-row">
-                      <i class="icon">
-<!--                        <img src="@/assets/images/icon-2.png" width="100%"/>-->
-                        <img src="@/assets/images/icon-2.png" width="25"/>
+                      <i class="icon iconfont pc-media">
+                        &#xe665;
+                      </i>
+                      <i class="icon iconfont iphone-media">
+                        &#xe64d;
                       </i>
                       <div class="name">
                         <countdown endTime="1659087210000" endText="End time: 2022/07/29 18:00"/>
                       </div>
                     </div>
                     <div class="reward wrapper-flex-row">
-                      <i class="icon">
-                        <img src="@/assets/images/icon-3.png" width="100%"/>
+                      <i class="icon iconfont pc-media">
+                        &#xe74e;
+                      </i>
+                      <i class="icon iconfont iphone-media">
+                        &#xe6bf;
                       </i>
                       <div class="name"><a href="#" target="_blank">TEXT</a>; <a href="#" target="_blank">BAYC</a></div>
                     </div>
@@ -86,8 +99,12 @@
                       12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
                     </div>
                     <div class="reward wrapper-flex-row">
-                      <i class="icon">
-                        <img src="@/assets/images/icon-1.png" width="100%"/>
+
+                      <i class="icon iconfont pc-media">
+                        &#xe6b6;
+                      </i>
+                      <i class="icon iconfont iphone-media">
+                        &#xe8fa;
                       </i>
                       <div class="name">1st: <a href="#" target="_blank">Opensea</a>; <a href="#"
                                                                                          target="_blank">Etherscan</a><br/>
@@ -96,17 +113,22 @@
                       </div>
                     </div>
                     <div class="reward wrapper-flex-row">
-                      <i class="icon">
-                        <!--                        <img src="@/assets/images/icon-2.png" width="100%"/>-->
-                        <img src="@/assets/images/icon-2.png" width="25"/>
+                      <i class="icon iconfont pc-media">
+                        &#xe665;
+                      </i>
+                      <i class="icon iconfont iphone-media">
+                        &#xe64d;
                       </i>
                       <div class="name">
                         <countdown endTime="1659087210000" endText="End time: 2022/07/29 18:00"/>
                       </div>
                     </div>
                     <div class="reward wrapper-flex-row">
-                      <i class="icon">
-                        <img src="@/assets/images/icon-3.png" width="100%"/>
+                      <i class="icon iconfont pc-media">
+                        &#xe74e;
+                      </i>
+                      <i class="icon iconfont iphone-media">
+                        &#xe6bf;
                       </i>
                       <div class="name"><a href="#" target="_blank">TEXT</a>; <a href="#" target="_blank">BAYC</a></div>
                     </div>

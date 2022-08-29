@@ -46,7 +46,7 @@
         </a>
 
       </div>
-      <a class="icon-select">
+      <a class="icon-select" v-if="$route.path=='/home'||$route.path=='/'">
         <span class="iconfont">&#xe604;</span>
       </a>
     </div>
@@ -105,6 +105,8 @@ export default {
   },
   mounted() {
   },
+  watch:{
+  },
   computed: {},
   methods: {
     linkTo(item) {
@@ -121,6 +123,14 @@ export default {
       await $store.dispatch('getUserInfo');
       // this.user=$store.state.user;
       this.$emit('getAccounts', $store.state.user);
+      if (!window.ethereum) {
+        return;
+      }
+      ethereum.on("accountsChanged", function (accounts) {
+        if (accounts.length == 0) {
+          $store.dispatch('getUserInfo');
+        }
+      });
     },
     /**
      * @desc: Call metamask through store internal method

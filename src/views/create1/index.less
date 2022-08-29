@@ -234,8 +234,15 @@
     width: 90%;
     margin: auto;
     .create1-title {
-      padding: 50px 0 25px;
+      margin:0 5px 5.5vh;
+      padding:2rem 10% 0;
       font-size: 18px;
+      text-align: left;
+      line-height: 1.1;
+      box-sizing: border-box;
+      //background: #073436;
+      width: 120%;
+      margin-left: -10%;
     }
 
     .text-container{
@@ -307,12 +314,12 @@
     dl{
       .span{
         width: 30px;
-        display: inline;
         background: transparent;
         border: 0;
         font-size:22px;
         color: #ffffff;
         text-align: center;
+        opacity: 0;
       }
       .data-sum{
         font-size:16px;
@@ -336,13 +343,14 @@
       }
       dd{
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 4vh;
         .dd-tit{
           font-size:16px;
           line-height: 1;
+          padding-bottom:5px;
         }
         .text{
-          line-height: 25px;
+          line-height: 30px;
           font-size:16px;
           &.text1{
             max-width: 100%;
@@ -403,10 +411,18 @@
     .button-game{
       font-size: 16px;
       line-height: 50px;
-      margin-top: 30px;
+      margin-top:14vh;
     }
     .button-game.addTop{
       //margin-top: 300px;
     }
+  }
+  .sentence-container .list{
+    padding-bottom: 0;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+  }
+  .user-section{
+    padding-bottom: 0;
   }
 }

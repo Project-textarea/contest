@@ -6,7 +6,7 @@
       <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section other-search-section">
-        <div class="section-title">Word in contest</div>
+        <div class="section-title"><i class="iconfont" style="font-size:1.5rem;margin-right: 0.8rem;vertical-align: top;margin-top: 0.3rem;display: inline-block;color: #669ea0">&#xe64a;</i>Word in contest</div>
         <ul class="list" v-if="address!=null">
           <li :class="index==0?'active':''" v-for="(item,index) in wordList" :key="index">
             <text>{{ item.text }}</text>

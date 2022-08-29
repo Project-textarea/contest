@@ -7,7 +7,7 @@
       <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section">
-        <div class="section-title">Word in contest</div>
+        <div class="section-title"><i class="iconfont" style="font-size:1.5rem;margin-right: 0.8rem;vertical-align: top;margin-top: 0.3rem;display: inline-block;color: #669ea0">&#xe64a;</i>Word in contest</div>
         <div class="form-container wrapper-flex-row" @click="showFocus=true;$refs.search1.focus();$refs.search.focus()" :class="focus?'focus':''">
           <a  class="iphone-media" style="margin-right: 0;width: 100%;">
             <span class="iconfont no-selection" v-if="!showFocus" style="width: 100%;display:block;line-height: 20px;">&#xe8d6;</span>
@@ -37,7 +37,9 @@
         </ul>
       </section>
       <section class="user-section sentence-container">
-          <div class="section-title">Competition information</div>
+          <div class="section-title">
+            <img src="@/assets/images/versus.png" width="35" />
+            Competition information</div>
         <div class="list ">
           <ul class="wrapper-flex-wrap list-container">
             <li>
@@ -120,7 +122,10 @@
                       </span>
                     </div>
                   </div>
-                  <div class="vote" style="font-size: 1.6rem;margin-top: 0;line-height: 20px;">
+                  <div class="vote pc-media" style="font-size: 1.3rem;margin-top: 0;line-height: 20px;">
+                    <span class="iconfont" style="font-size: 1.3rem;margin-top: 0;line-height: 20px;">&#xe6bf;</span>34
+                  </div>
+                  <div class="vote iphone-media" style="font-size: 1.6rem;margin-top: 0;line-height: 20px;">
                     <span class="iconfont" style="font-size: 1.6rem;margin-top: 0;line-height: 20px;">&#xe6bf;</span>34
                   </div>
                   <div class="vote share-wrapper iphone-media" style="display: inline-block">

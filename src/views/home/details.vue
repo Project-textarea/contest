@@ -6,7 +6,7 @@
       <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <!-- user-section-->
       <section class="user-section nft-search-section">
-        <div class="section-title">Word in contest</div>
+        <div class="section-title"><i class="iconfont" style="font-size:1.5rem;margin-right: 0.8rem;vertical-align: top;margin-top: 0.3rem;display: inline-block;color: #669ea0">&#xe64a;</i>Word in contest</div>
         <div class="form-container wrapper-flex-row" :class="focus?'focus':''" @click="$refs.search.focus()">
           <a href="#">
             <span class="iconfont no-selection">&#xe86e;</span>

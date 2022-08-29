@@ -5,7 +5,7 @@
       <!-- user-section-->
       <user-navigation class="user-section pc-media" @getAccounts='getAccounts' :user="address"></user-navigation>
       <section class="user-section nft-search-section">
-        <div class="section-title">Word in contest</div>
+        <div class="section-title"><i class="iconfont" style="font-size:1.5rem;margin-right: 0.8rem;vertical-align: top;margin-top: 0.3rem;display: inline-block;color: #669ea0">&#xe64a;</i>Word in contest</div>
         <div class="form-container wrapper-flex-row" :class="focus?'focus':''" @click="$refs.search.focus()">
           <a href="#" class="iphone-media">
             <span class="iconfont no-selection">&#xe8d6;</span>
@@ -34,7 +34,9 @@
         </ul>
       </section>
       <section class="user-section sentence-container">
-        <div class="section-title">Sentences for competition</div>
+        <div class="section-title">
+          <img src="@/assets/images/route.png" width="24" />
+          Sentences for competition</div>
         <div class="list ">
           <ul class="wrapper-flex-wrap list-container">
             <li class="no-first">
@@ -43,12 +45,15 @@
                   12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
                 </div>
                 <div class="reward wrapper-flex-row">
-<!--                  <i class="icon">-->
-<!--                    <img src="@/assets/images/icon-1.png" width="100%"/>-->
-<!--                  </i>-->
+                  <!--                  <i class="icon">-->
+                  <!--                    <img src="@/assets/images/icon-1.png" width="100%"/>-->
+                  <!--                  </i>-->
 
-                  <i class="iconfont-nav icon">
+                  <i class="iconfont-nav icon pc-media">
                     &#xe605;
+                  </i>
+
+                  <i class="icon iconfont iphone-media">&#xe651;
                   </i>
                   <div class="name">1st: <a href="#" target="_blank">0x466C...13Ac</a><br/>
                     2st: <a href="#" target="_blank">0x466C...13Ac</a><br/>
@@ -56,14 +61,20 @@
                   </div>
                 </div>
                 <div class="reward wrapper-flex-row">
-                  <i class="icon iconfont">
+                  <i class="icon iconfont pc-media">
                     &#xe665;
+                  </i>
+                  <i class="icon iconfont iphone-media">
+                    &#xe64d;
                   </i>
                   <div class="name">End time: 2022/07/29 18:00</div>
                 </div>
                 <div class="reward wrapper-flex-row">
-                  <i class="icon iconfont">
+                  <i class="icon iconfont pc-media">
                     &#xe74e;
+                  </i>
+                  <i class="icon iconfont iphone-media">
+                    &#xe6bf;
                   </i>
                   <div class="name"><a href="#" target="_blank">TEXT</a>; <a href="#" target="_blank">BAYC</a></div>
                 </div>
@@ -74,21 +85,21 @@
                 <div class="info">{{ item.text }}
                 </div>
                 <div class="doing wrapper-flex-row">
-<!--                  <div class="share">-->
-<!--                    <a href="#" target="_blank">-->
-<!--                      <span class="iconfont">&#xf24d;</span>-->
-<!--                    </a>-->
-<!--                    <a href="#" target="_blank">-->
-<!--                      <span class="iconfont">&#xe7d7;</span>-->
-<!--                    </a>-->
-<!--                    <a href="#" target="_blank">-->
-<!--                      <span class="iconfont">&#xe606;</span>-->
-<!--                    </a>-->
-<!--                  </div>-->
-<!--                  <div class="vote">-->
-<!--                    <span class="iconfont">&#xe602;</span>-->
-<!--                    Vote-->
-<!--                  </div>-->
+                  <!--                  <div class="share">-->
+                  <!--                    <a href="#" target="_blank">-->
+                  <!--                      <span class="iconfont">&#xf24d;</span>-->
+                  <!--                    </a>-->
+                  <!--                    <a href="#" target="_blank">-->
+                  <!--                      <span class="iconfont">&#xe7d7;</span>-->
+                  <!--                    </a>-->
+                  <!--                    <a href="#" target="_blank">-->
+                  <!--                      <span class="iconfont">&#xe606;</span>-->
+                  <!--                    </a>-->
+                  <!--                  </div>-->
+                  <!--                  <div class="vote">-->
+                  <!--                    <span class="iconfont">&#xe602;</span>-->
+                  <!--                    Vote-->
+                  <!--                  </div>-->
                 </div>
               </div>
             </li>
@@ -112,7 +123,7 @@ export default ({
   },
   data() {
     return {
-      loading:false,//loading Module
+      loading: false,//loading Module
       search: '',
       focus: false,
       navIndex: 0,
@@ -277,7 +288,7 @@ export default ({
   },
   methods: {
     getAccounts(accounts) {
-      this.address=accounts;
+      this.address = accounts;
       // console.log(this.address)
     }
   },
